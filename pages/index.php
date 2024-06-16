@@ -62,9 +62,9 @@
                                 <div class="row mb-3 d-flex align-items-center tarefa">
                                     <div class="col-sm-9">Lavar carro</div>
                                     <div class="col-sm-3 mt-2 d-flex justify-content-between">
-                                        <ion-icon name="close-circle-outline" size='large'></ion-icon>
-                                        <ion-icon name="create-outline" size='large'></ion-icon>
-                                        <ion-icon name="checkbox-outline" size='large'></ion-icon>
+                                        <ion-icon name="close-circle-outline" size='large' class='text-danger'></ion-icon>
+                                        <ion-icon name="create-outline" size='large' class='text-info'></ion-icon>
+                                        <ion-icon name="checkbox-outline" size='large' class='text-success'></ion-icon>
                                     </div>
                                 </div>
                                 <!-- tarefa E -->
@@ -73,9 +73,9 @@
                                 <div class="row mb-3 d-flex align-items-center tarefa">
                                     <div class="col-sm-9">Lavar carro</div>
                                     <div class="col-sm-3 mt-2 d-flex justify-content-between">
-                                        <ion-icon name="close-circle-outline" size='large'></ion-icon>
-                                        <ion-icon name="create-outline" size='large'></ion-icon>
-                                        <ion-icon name="checkbox-outline" size='large'></ion-icon>
+                                        <ion-icon name="close-circle-outline" size='large' class='text-danger'></ion-icon>
+                                        <ion-icon name="create-outline" size='large' class='text-info'></ion-icon>
+                                        <ion-icon name="checkbox-outline" size='large' class='text-success'></ion-icon>
                                     </div>
                                 </div>
                                 <!-- tarefa E -->
