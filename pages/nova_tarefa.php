@@ -57,10 +57,11 @@
                                 <hr>
 
                                 <!-- nova tarefa S -->
-                                <form action="">
+                                 <!-- Definindo metodo = post | action = arquivo php! | name = tarefa (necessário para super global $_POST) -->
+                                <form action="../assets/tarefa_controller.php" method='post'>
                                     <div class="form-group">
                                         <label for="" class='mb-2'>Descrição da tarefa:</label>
-                                        <input type="text" class='form-control mb-4' placeholder='Exemplo: Lavar o carro'>
+                                        <input type="text" class='form-control mb-4' placeholder='Exemplo: Lavar o carro' name='tarefa'>
                                     </div>
 
                                     <button class="btn btn-success">Cadastrar</button>

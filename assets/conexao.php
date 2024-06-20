@@ -1,6 +1,8 @@
 <!-- Script para ESTUDOS! -->
 <!-- Num projeto real, arqquivos como este devem estar protegidos em diretório PRIVADOS -->
 
+<!-- Para isso, use require! -->
+
 <?php
 // Objeto CONEXÂO
     class Conexao {
