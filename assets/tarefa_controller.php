@@ -4,6 +4,21 @@
 <!-- Para isso, use require! -->
 
 <?php
+    // Imports
+    require "tarefa_model.php";
+    require "tarefa_service.php";
+    require "conexao.php";
+
+    // Instancias
+    $tarefa = new Tarefa();
+    $tarefa->__set('tarefa', $_POST['tarefa']);
+
+    $conexao = new Conexao();
+
+    $tarefa_service = new TarefaService($conexao, $tarefa);
+
+    // // DEBUG
+
     echo '<pre>';
         print_r($_POST);
     echo '</pre>';
