@@ -16,10 +16,15 @@
     $conexao = new Conexao();
 
     $tarefa_service = new TarefaService($conexao, $tarefa);
+    $tarefa_service->inserir();
 
     // // DEBUG
 
     echo '<pre>';
-        print_r($_POST);
+        print_r($tarefa_service);
     echo '</pre>';
+
+    // echo '<pre>';
+    //     print_r($_POST);
+    // echo '</pre>';
 ?>

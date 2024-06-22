@@ -13,12 +13,19 @@
         // Construtor
         // Tipagem | Podemos indicar o tipo do dado que será recebido!
         public function __construct(Conexao $conexao, Tarefa $tarefa) {
-            $this->conexao = $conexao;
+            // Aqui, chamamos o método conectar do objeto conexão a fim de criar a comunicação com o DB
+            $this->conexao = $conexao->conectar();
             $this->tarefa = $tarefa;
         }
 
         // Métodos
-        public function inserir() {}
+        public function inserir() {
+            // Inserindo tarefas no DB com PREPARE | :
+            $query = 'insert into tb_tarefas(tarefa)values(:tarefa)';
+            $stmt = $this->conexao->prepare($query);
+            $stmt->bindValue(':tarefa', $this->tarefa->__get('tarefa'));
+            $stmt->execute();
+        }
 
         public function recuperar() {}
 
