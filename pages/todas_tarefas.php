@@ -35,6 +35,8 @@
 
         <!-- scripts -->
         <script>
+            // Editando tarefas
+
             function editar(id, txt_tarefa) {
                 // form para edicao
                 // form
@@ -88,6 +90,14 @@
                 // alert(id);
                 // alert(txt_tarefa);
             }
+
+            // removendo tarefas
+
+            function remover(id) {
+                // fazendo requisição do script com parametro remover | ?acao=remover
+                // para adicionar mais de um parametro use | &
+                location.href = "todas_tarefas.php?acao=remover&id=" + id;
+            }
         </script>
     </head>
 
@@ -139,9 +149,10 @@
                                                 <?=$tarefa->tarefa?> (<?=$tarefa->status?>)
                                             </div>
                                             <div class="col-sm-3 mt-2 d-flex justify-content-between">
-                                                <ion-icon name="close-circle-outline" size='large' class='text-danger'></ion-icon>
+                                                <!-- Adicionando id dinamico para remoção de tarefa | onclick= -->
+                                                <ion-icon name="close-circle-outline" size='large' class='text-danger' onclick="remover(<?=$tarefa->id?>)"></ion-icon>
                                                 <!-- Adicionando id dinamico da tarefa à função do onclick= -->
-                                                 <!-- Adicionando descrição ja existente da tarefa para edição mais rápida | STRING -->
+                                                <!-- Adicionando descrição ja existente da tarefa para edição mais rápida | STRING -->
                                                 <ion-icon name="create-outline" size='large' class='text-info' onclick="editar(<?=$tarefa->id?>, '<?=$tarefa->tarefa?>')"></ion-icon>
                                                 <ion-icon name="checkbox-outline" size='large' class='text-success'></ion-icon>
                                             </div>

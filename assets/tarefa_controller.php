@@ -39,7 +39,7 @@
         // DEBUG
 
         // echo 'Chegamos até aqui!';
-    } else if($acao = 'atualizar') {
+    } else if($acao == 'atualizar') {
         $tarefa = new Tarefa();
         $tarefa->__set('id', $_POST['id']);
         $tarefa->__set('tarefa', $_POST['tarefa']);
@@ -59,6 +59,21 @@
         // echo '<pre>';
         //     print_r($_POST);
         // echo '</pre>';
+    } else if($acao == 'remover') {
+        $tarefa = new Tarefa();
+        $tarefa->__set('id', $_GET['id']);
+
+        $conexao = new Conexao();
+
+        $tarefa_service = new TarefaService($conexao, $tarefa);
+        $tarefa_service->remover();
+
+        // Redirecionando usuário
+        header('Location: ../pages/todas_tarefas.php');
+        
+        // DEBUG
+
+        // echo 'Chegamos no remover';
     }
 
     // // DEBUG
