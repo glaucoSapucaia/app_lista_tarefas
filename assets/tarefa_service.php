@@ -43,7 +43,18 @@
             return $stmt->fetchAll(PDO::FETCH_OBJ);
         }
 
-        public function atualizar() {}
+        public function atualizar() {
+            // Atualizando dados da DB com PREPARE
+            $query = 'update tb_tarefas set tarefa = :tarefa where id = :id';
+            $stmt = $this->conexao->prepare($query);
+            $stmt->bindValue(':tarefa', $this->tarefa->__get('tarefa'));
+            $stmt->bindValue(':id', $this->tarefa->__get('id'));
+            return $stmt->execute();
+
+            // DEBUG
+
+            // print_r($this->tarefa);
+        }
 
         public function remover() {}
     }

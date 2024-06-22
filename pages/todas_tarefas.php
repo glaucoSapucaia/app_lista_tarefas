@@ -39,7 +39,8 @@
                 // form para edicao
                 // form
                 let form = document.createElement('form');
-                form.action = '#';
+                // Action do form com parametro para controle do fluxo da aplicação | ?acao=atualizar
+                form.action = '../assets/tarefa_controller.php?acao=atualizar';
                 form.method = 'POST';
                 form.className = 'row';
 
@@ -51,8 +52,9 @@
                 input_tarefa.value = txt_tarefa;
 
                 // input hidden para coluna id da terfa no DB
-                input_id = document.createElement('input');
+                let input_id = document.createElement('input');
                 input_id.type = 'hidden';
+                input_id.name = 'id';
                 input_id.className = 'id';
                 input_id.value = id;
 

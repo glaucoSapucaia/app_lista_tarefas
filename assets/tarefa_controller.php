@@ -39,6 +39,26 @@
         // DEBUG
 
         // echo 'Chegamos até aqui!';
+    } else if($acao = 'atualizar') {
+        $tarefa = new Tarefa();
+        $tarefa->__set('id', $_POST['id']);
+        $tarefa->__set('tarefa', $_POST['tarefa']);
+
+        $conexao = new Conexao();
+        $tarefa_service = new TarefaService($conexao, $tarefa);
+
+        // Executando query e redirecionando usuário a partir do retorno booleano
+        if($tarefa_service->atualizar()) {
+            header('Location: ../pages/todas_tarefas.php');
+        } 
+
+        // DEBUG
+
+        // echo 'Estamos no atualizar!';
+
+        // echo '<pre>';
+        //     print_r($_POST);
+        // echo '</pre>';
     }
 
     // // DEBUG
