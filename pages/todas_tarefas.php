@@ -32,6 +32,61 @@
 
         <!-- CSS -->
         <link rel="stylesheet" href="../css/style.css">
+
+        <!-- scripts -->
+        <script>
+            function editar(id, txt_tarefa) {
+                // form para edicao
+                // form
+                let form = document.createElement('form');
+                form.action = '#';
+                form.method = 'POST';
+                form.className = 'row';
+
+                // input
+                let input_tarefa = document.createElement('input');
+                input_tarefa.type = 'text';
+                input_tarefa.name = 'tarefa';
+                input_tarefa.className = 'col-9';
+                input_tarefa.value = txt_tarefa;
+
+                // input hidden para coluna id da terfa no DB
+                input_id = document.createElement('input');
+                input_id.type = 'hidden';
+                input_id.className = 'id';
+                input_id.value = id;
+
+                // button
+                let button = document.createElement('button');
+                button.type = 'submit';
+                button.className = 'col-3 btn btn-info';
+                button.innerHTML = 'Atualizar';
+
+                // construindo elemento
+                form.appendChild(input_tarefa);
+                form.appendChild(input_id);
+                form.appendChild(button);
+
+                // Selecionando div tarefa especifica
+                let tarefa = document.getElementById('tarefa_' + id);
+
+                // limpando conteudo da tarefa para inclusao do form
+                tarefa.innerHTML = '';
+
+                // Incluindo form na pagina
+                // insertBefore() -> Adiciona uma árvore de elementos HTML em um elemento ja renderizado
+                    // 1. arvore de elementos a ser adicionada
+                    // 2. nó para a adição + o indice do elemento interno
+                tarefa.insertBefore(form, tarefa[0]);
+
+                // DEBUG
+
+                // alert('Funcionou');
+                // console.log(form);
+                // alert(id);
+                // alert(txt_tarefa);
+            }
+        </script>
     </head>
 
     <body>
@@ -77,10 +132,15 @@
                                     foreach($tarefas as $key => $tarefa) { ?>
                                         <!-- tarefa S -->
                                         <div class="row mb-3 d-flex align-items-center tarefa">
-                                            <div class="col-sm-9"><?=$tarefa->tarefa?> (<?=$tarefa->status?>)</div>
+                                            <!-- Incluindo elemento de edição de tarefa | id dinamico para função editar -->
+                                            <div class="col-sm-9" id="tarefa_<?=$tarefa->id?>">
+                                                <?=$tarefa->tarefa?> (<?=$tarefa->status?>)
+                                            </div>
                                             <div class="col-sm-3 mt-2 d-flex justify-content-between">
                                                 <ion-icon name="close-circle-outline" size='large' class='text-danger'></ion-icon>
-                                                <ion-icon name="create-outline" size='large' class='text-info'></ion-icon>
+                                                <!-- Adicionando id dinamico da tarefa à função do onclick= -->
+                                                 <!-- Adicionando descrição ja existente da tarefa para edição mais rápida | STRING -->
+                                                <ion-icon name="create-outline" size='large' class='text-info' onclick="editar(<?=$tarefa->id?>, '<?=$tarefa->tarefa?>')"></ion-icon>
                                                 <ion-icon name="checkbox-outline" size='large' class='text-success'></ion-icon>
                                             </div>
                                         </div>
