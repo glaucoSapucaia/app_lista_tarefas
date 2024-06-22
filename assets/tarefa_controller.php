@@ -12,6 +12,10 @@
     // teste para fluxo da página
     $acao = isset($_GET['acao']) ? $_GET['acao'] : $acao;
 
+    // DEBUG
+
+    // echo $acao;
+
     // verificando parametro ?acao=inserir da super global $_GET
     if($acao == 'inserir') {
 
@@ -39,6 +43,7 @@
         // DEBUG
 
         // echo 'Chegamos até aqui!';
+
     } else if($acao == 'atualizar') {
         $tarefa = new Tarefa();
         $tarefa->__set('id', $_POST['id']);
@@ -59,6 +64,7 @@
         // echo '<pre>';
         //     print_r($_POST);
         // echo '</pre>';
+
     } else if($acao == 'remover') {
         $tarefa = new Tarefa();
         $tarefa->__set('id', $_GET['id']);
@@ -74,6 +80,19 @@
         // DEBUG
 
         // echo 'Chegamos no remover';
+
+    } else if($acao == 'marcarRealizada') {
+        $tarefa = new Tarefa();
+        $tarefa->__set('id', $_GET['id']);
+        $tarefa->__set('id_status', 2);
+
+        $conexao = new Conexao();
+
+        $tarefa_service = new TarefaService($conexao, $tarefa);
+        $tarefa_service->marcarRealizada();
+
+        // Redirecionando usuário após ação
+        header('Location: ../pages/todas_tarefas.php');
     }
 
     // // DEBUG

@@ -92,12 +92,18 @@
             }
 
             // removendo tarefas
-
             function remover(id) {
                 // fazendo requisição do script com parametro remover | ?acao=remover
                 // para adicionar mais de um parametro use | &
                 location.href = "todas_tarefas.php?acao=remover&id=" + id;
             }
+
+            // Marcando como tarefa realizada
+            function marcarRealizada(id) {
+                // rederizando mesma pagina com parametro de tarefa realizada
+                location.href = "todas_tarefas.php?acao=marcarRealizada&id=" + id;
+            }
+
         </script>
     </head>
 
@@ -151,10 +157,16 @@
                                             <div class="col-sm-3 mt-2 d-flex justify-content-between">
                                                 <!-- Adicionando id dinamico para remoção de tarefa | onclick= -->
                                                 <ion-icon name="close-circle-outline" size='large' class='text-danger' onclick="remover(<?=$tarefa->id?>)"></ion-icon>
-                                                <!-- Adicionando id dinamico da tarefa à função do onclick= -->
-                                                <!-- Adicionando descrição ja existente da tarefa para edição mais rápida | STRING -->
-                                                <ion-icon name="create-outline" size='large' class='text-info' onclick="editar(<?=$tarefa->id?>, '<?=$tarefa->tarefa?>')"></ion-icon>
-                                                <ion-icon name="checkbox-outline" size='large' class='text-success'></ion-icon>
+
+                                                <!-- Exibindo editar e marcarRealizada apenas para tarefas pendentes! -->
+                                                <?php
+                                                    if($tarefa->status == 'pendente') { ?>
+                                                        <!-- Adicionando id dinamico da tarefa à função do onclick= -->
+                                                        <!-- Adicionando descrição ja existente da tarefa para edição mais rápida | STRING -->
+                                                        <ion-icon name="create-outline" size='large' class='text-info' onclick="editar(<?=$tarefa->id?>, '<?=$tarefa->tarefa?>')"></ion-icon>
+                                                        <!-- Adicionando id dinamico para atualizar status da tarefa | onclick -->
+                                                        <ion-icon name="checkbox-outline" size='large' class='text-success' onclick="marcarRealizada(<?=$tarefa->id?>)"></ion-icon>
+                                                <?php } ?>
                                             </div>
                                         </div>
                                         <!-- tarefa E -->   
