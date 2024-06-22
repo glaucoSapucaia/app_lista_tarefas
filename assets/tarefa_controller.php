@@ -27,10 +27,18 @@
         // redirecionando usuário
         // Adicionando parametro via GET | ?inclusao=1
         header('Location: ../pages/nova_tarefa.php?inclusao=1');
+
     } else if($acao == 'recuperar') {
+        // instancias para novo objeto TarefaService
+        $tarefa = new Tarefa();
+        $conexao = new Conexao();
+
+        $tarefa_service = new TarefaService($conexao, $tarefa);
+        $tarefas = $tarefa_service->recuperar();
+
         // DEBUG
 
-        echo 'Chegamos até aqui!';
+        // echo 'Chegamos até aqui!';
     }
 
     // // DEBUG

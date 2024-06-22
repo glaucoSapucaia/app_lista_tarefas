@@ -3,6 +3,12 @@
     $acao = 'recuperar';
 
     require '../assets/tarefa_controller.php';
+
+    // DEBUG
+
+    // echo '<pre>';
+    //     print_r($tarefas);
+    // echo '</pre>';
 ?>
 
 <!doctype html>
@@ -65,27 +71,22 @@
                             <div class="col">
                                 <h4>Todas as tarefas</h4>
                                 <hr>
-                                <!-- tarefa S -->
-                                <div class="row mb-3 d-flex align-items-center tarefa">
-                                    <div class="col-sm-9">Lavar carro</div>
-                                    <div class="col-sm-3 mt-2 d-flex justify-content-between">
-                                        <ion-icon name="close-circle-outline" size='large' class='text-danger'></ion-icon>
-                                        <ion-icon name="create-outline" size='large' class='text-info'></ion-icon>
-                                        <ion-icon name="checkbox-outline" size='large' class='text-success'></ion-icon>
-                                    </div>
-                                </div>
-                                <!-- tarefa E -->
 
-                                <!-- tarefa S -->
-                                <div class="row mb-3 d-flex align-items-center tarefa">
-                                    <div class="col-sm-9">Lavar carro</div>
-                                    <div class="col-sm-3 mt-2 d-flex justify-content-between">
-                                        <ion-icon name="close-circle-outline" size='large' class='text-danger'></ion-icon>
-                                        <ion-icon name="create-outline" size='large' class='text-info'></ion-icon>
-                                        <ion-icon name="checkbox-outline" size='large' class='text-success'></ion-icon>
-                                    </div>
-                                </div>
-                                <!-- tarefa E -->
+                                <!-- Recuperando terefas dinamicamente do DB ($tarefas de tarefa_controller.php) -->
+                                <?php
+                                    foreach($tarefas as $key => $tarefa) { ?>
+                                        <!-- tarefa S -->
+                                        <div class="row mb-3 d-flex align-items-center tarefa">
+                                            <div class="col-sm-9"><?=$tarefa->tarefa?> (<?=$tarefa->status?>)</div>
+                                            <div class="col-sm-3 mt-2 d-flex justify-content-between">
+                                                <ion-icon name="close-circle-outline" size='large' class='text-danger'></ion-icon>
+                                                <ion-icon name="create-outline" size='large' class='text-info'></ion-icon>
+                                                <ion-icon name="checkbox-outline" size='large' class='text-success'></ion-icon>
+                                            </div>
+                                        </div>
+                                        <!-- tarefa E -->   
+                                <?php } ?>
+
                             </div>
                             <!-- col tarefas E -->
                         </div>

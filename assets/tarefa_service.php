@@ -27,7 +27,21 @@
             $stmt->execute();
         }
 
-        public function recuperar() {}
+        public function recuperar() {
+            // Recuperando tarefas do DB com PREPARE | :
+            $query = '
+                select
+                    t.id, s.status, t.tarefa
+                from
+                    tb_tarefas as t
+                    left join tb_status as s on (t.id_status = s.id)
+            ';
+            $stmt = $this->conexao->prepare($query);
+            $stmt->execute();
+
+            // Recuperando dados como objetos
+            return $stmt->fetchAll(PDO::FETCH_OBJ);
+        }
 
         public function atualizar() {}
 
