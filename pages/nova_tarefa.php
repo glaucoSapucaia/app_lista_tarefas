@@ -68,7 +68,8 @@
 
                                 <!-- nova tarefa S -->
                                  <!-- Definindo metodo = post | action = arquivo php! | name = tarefa (necessário para super global $_POST) -->
-                                <form action="../assets/tarefa_controller.php" method='post'>
+                                <!-- Add do parametro ?acao=inserir -->
+                                <form action="../assets/tarefa_controller.php?acao=inserir" method='post'>
                                     <div class="form-group">
                                         <label for="" class='mb-2'>Descrição da tarefa:</label>
                                         <input type="text" class='form-control mb-4' placeholder='Exemplo: Lavar o carro' name='tarefa'>

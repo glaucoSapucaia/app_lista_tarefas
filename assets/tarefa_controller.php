@@ -9,18 +9,29 @@
     require "tarefa_service.php";
     require "conexao.php";
 
-    // Instancias
-    $tarefa = new Tarefa();
-    $tarefa->__set('tarefa', $_POST['tarefa']);
+    // teste para fluxo da página
+    $acao = isset($_GET['acao']) ? $_GET['acao'] : $acao;
 
-    $conexao = new Conexao();
+    // verificando parametro ?acao=inserir da super global $_GET
+    if($acao == 'inserir') {
 
-    $tarefa_service = new TarefaService($conexao, $tarefa);
-    $tarefa_service->inserir();
+        // Instancias
+        $tarefa = new Tarefa();
+        $tarefa->__set('tarefa', $_POST['tarefa']);
 
-    // redirecionando usuário
-    // Adicionando parametro via GET | ?inclusao=1
-    header('Location: ../pages/nova_tarefa.php?inclusao=1');
+        $conexao = new Conexao();
+
+        $tarefa_service = new TarefaService($conexao, $tarefa);
+        $tarefa_service->inserir();
+
+        // redirecionando usuário
+        // Adicionando parametro via GET | ?inclusao=1
+        header('Location: ../pages/nova_tarefa.php?inclusao=1');
+    } else if($acao == 'recuperar') {
+        // DEBUG
+
+        echo 'Chegamos até aqui!';
+    }
 
     // // DEBUG
 

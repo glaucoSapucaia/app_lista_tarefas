@@ -1,3 +1,10 @@
+<?php
+    // Controlando fluxo da página
+    $acao = 'recuperar';
+
+    require '../assets/tarefa_controller.php';
+?>
+
 <!doctype html>
 <html lang="pt-br">
     <head>
