@@ -54,7 +54,13 @@
 
         // Executando query e redirecionando usuário a partir do retorno booleano
         if($tarefa_service->atualizar()) {
-            header('Location: ../pages/todas_tarefas.php');
+            // fluxo de redirecionamento da pagina
+            if(isset($_GET['pag']) && $_GET['pag'] == 'index') {
+                header('Location: ../pages/index.php');
+
+            } else {
+                header('Location: ../pages/todas_tarefas.php');
+            }
         } 
 
         // DEBUG
@@ -74,9 +80,14 @@
         $tarefa_service = new TarefaService($conexao, $tarefa);
         $tarefa_service->remover();
 
-        // Redirecionando usuário
-        header('Location: ../pages/todas_tarefas.php');
-        
+        // fluxo de redirecionamento da pagina
+        if(isset($_GET['pag']) && $_GET['pag'] == 'index') {
+            header('Location: ../pages/index.php');
+            
+        } else {
+            header('Location: ../pages/todas_tarefas.php');
+        }
+    
         // DEBUG
 
         // echo 'Chegamos no remover';
@@ -91,8 +102,22 @@
         $tarefa_service = new TarefaService($conexao, $tarefa);
         $tarefa_service->marcarRealizada();
 
-        // Redirecionando usuário após ação
-        header('Location: ../pages/todas_tarefas.php');
+        // fluxo de redirecionamento da pagina
+        if(isset($_GET['pag']) && $_GET['pag'] == 'index') {
+            header('Location: ../pages/index.php');
+            
+        } else {
+            header('Location: ../pages/todas_tarefas.php');
+        }
+
+    } else if($acao == 'recuperar_tarefas_pendentes') {
+        $tarefa = new Tarefa();
+        $tarefa->__set('id_status', 1);
+
+        $conexao = new Conexao();
+
+        $tarefa_service = new TarefaService($conexao, $tarefa);
+        $tarefas = $tarefa_service->recuperarTarefasPendentes();
     }
 
     // // DEBUG
