@@ -18,11 +18,15 @@
     $tarefa_service = new TarefaService($conexao, $tarefa);
     $tarefa_service->inserir();
 
+    // redirecionando usuário
+    // Adicionando parametro via GET | ?inclusao=1
+    header('Location: ../pages/nova_tarefa.php?inclusao=1');
+
     // // DEBUG
 
-    echo '<pre>';
-        print_r($tarefa_service);
-    echo '</pre>';
+    // echo '<pre>';
+    //     print_r($tarefa_service);
+    // echo '</pre>';
 
     // echo '<pre>';
     //     print_r($_POST);

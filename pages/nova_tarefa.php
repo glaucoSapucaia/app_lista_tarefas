@@ -35,6 +35,16 @@
         </nav>
         <!-- nav E -->
 
+        <!-- mensagem usuário S -->
+        <?php
+            // Verificando parametro | ?inclusao=1
+            if(isset($_GET['inclusao']) && $_GET['inclusao'] == 1) { ?>
+                <div class="bg-success pt-2 text-white d-flex justify-content-center">
+                    <h5>Tarefa inserida com sucesso!</h5>
+                </div>
+        <?php } ?>
+        <!-- mensagem usuario E -->
+
         <!-- app S -->
         <div class="container app">
             <div class="row">
